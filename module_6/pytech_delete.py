@@ -1,6 +1,6 @@
 # Christeen Safar 
 # June 26, 2022
-# Module 6.2 - pytech_update.py
+# Module 6.2 - pytech_delete.py
 	
 
 #import pymongo
