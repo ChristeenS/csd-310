@@ -2,47 +2,39 @@
 # June 19, 2022
 # Module 5.3 - pytech_insert.py
 
-# Import MongoClient
 from pymongo import MongoClient
 
-# Set up connection
-url = "mongodb+srv://admin:admin@cluster0.cl9pp.mongodb.net/?retryWrites=true&w=majority";
+url = "mongodb+srv://admin:admin>@cluster0.cl9pp.mongodb.net/?retryWrites=true&w=majority"
+
 client = MongoClient(url)
+
 db = client.pytech
 
-# Students collection 
-collection = db.Students
+John = {
+    "student_id": "1007",
+    "first_name": "John",
+    "last_name": "James",}
+ 
+Jane = {
+    "student_id": "1008",
+    "first_name": "Jane",
+    "last_name": "Johnson",}
 
-# insert statements 
+Jack = {
+    "student_id": "1009",
+    "first_name": "Jack",
+    "last_name": "Jacob"}
+
+students = db.students
+ 
 print("\n  -- INSERT STATEMENTS --")
+John_student_id = students.insert_one(John).inserted_id
+print("  Inserted student record John James into the students collection with document_id " + str(John_student_id))
 
-# Students data.
-student = {
-    "student_id":"1007",
-    "first_name":"John",
-    "last_name":"James"
-}
+Jane_student_id = students.insert_one(Jane).inserted_id
+print("  Inserted student record Jane Johnson into the students collection with document_id " + str(Jane_student_id))
 
-new_student_id = collection.insert_one(student).inserted_id
-print(f"Inserted student record {student['first_name']} {student['last_name']} into the students collection with document_id {new_student_id}")
+Jack_student_id = students.insert_one(Jack).inserted_id
+print("  Inserted student record Jack Jacob into the students collection with document_id " + str(Jack_student_id))
 
-student = {
-    "student_id":"1008",
-    "first_name":"Jane",
-    "last_name":"Johnson"
-}
-
-new_student_id = collection.insert_one(student).inserted_id
-print(f"Inserted student record {student['first_name']} {student['last_name']} into the students collection with document_id {new_student_id}")
-
-student = {
-    "student_id":"1009",
-    "first_name":"Jack",
-    "last_name":"Jacob"
-}
-
-new_student_id = collection.insert_one(student).inserted_id
-print(f"Inserted student record {student['first_name']} {student['last_name']} into the students collection with document_id {new_student_id}")
-
-# Exit message
 input("\n\n  End of program, press any key to exit... ")
