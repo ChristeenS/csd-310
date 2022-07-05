@@ -3,10 +3,12 @@
 # Module 5.3 - pytech_insert.py
 
 from pymongo import MongoClient
+import certifi
+import ssl
+ca = certifi.where()
 
-url = "mongodb+srv://admin:admin>@cluster0.cl9pp.mongodb.net/?retryWrites=true&w=majority"
-
-client = MongoClient(url)
+url = "mongodb+srv://admin:admin@cluster0.dli7w.mongodb.net/?retryWrites=true&w=majority"
+client = MongoClient(url,ssl=True,  ssl_ca_certs=ca)
 
 db = client.pytech
 
